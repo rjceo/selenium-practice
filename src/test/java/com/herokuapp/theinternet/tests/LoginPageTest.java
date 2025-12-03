@@ -1,5 +1,6 @@
-package com.herokuapp.theinternet;
+package com.herokuapp.theinternet.tests;
 
+import com.herokuapp.theinternet.common.Common;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
