@@ -1,29 +1,32 @@
-package com.herokuapp.theinternet.tests;
+package com.herokuapp.theinternet.test;
 
 import com.herokuapp.theinternet.common.Common;
-import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 
 import java.time.Duration;
 
 public class LoginPageTest {
     Common config = new Common();
-    String browser = "chrome";
 
-    @Test
-    @Tag("positive")
-    @DisplayName("Verify fields of the Login Page are displayed and have correct default values")
+    @Test(
+            groups = "positive",
+            description = "Verify fields of the Login Page are displayed and have correct default values"
+    )
     public void verifyLoginPageFields() throws InterruptedException{
-        Assertions.fail("Need to write tests for this function");
+        Assert.fail("Need to write tests for this function");
     }
 
-    @Test
-    @Tag("positive")
-    @DisplayName("Verify user is able to successfully login to the secure page")
+    @Test(
+            groups = { "positive" },
+            description = "Verify user is able to successfully login to the secure page"
+    )
     public void verifySuccessfulLogin() throws InterruptedException{
         WebDriver driver = config.openBrowser(browser);
         //Set page implicit load
@@ -54,7 +57,7 @@ public class LoginPageTest {
         )))
             driver.findElement(By.xpath("//button[@class='radius']")).click();
         else
-            Assertions.fail("Login button is not visible and/or clickable.");
+            Assert.fail("Login button is not visible and/or clickable.");
 
         //Secure Page
         System.out.println("Verify URL");
@@ -63,7 +66,7 @@ public class LoginPageTest {
         System.out.println("Expected: ".concat(strExpectedURL));
         System.out.println("Actual: ".concat(strActualURL));
         if(!strExpectedURL.equals(strActualURL))
-            Assertions.fail("URL is not as expected!");
+            Assert.fail("URL is not as expected!");
         System.out.println();
 
         System.out.println("Verify Success Message");
@@ -74,7 +77,7 @@ public class LoginPageTest {
         System.out.println("Expected: ".concat(strExpectedMsg));
         System.out.println("Actual: ".concat(strActualMsg[0]));
         if (!strExpectedMsg.equals(strActualMsg[0]))
-            Assertions.fail("Message is not as expected!");
+            Assert.fail("Message is not as expected!");
         System.out.println();
 
         // Logout
@@ -84,8 +87,10 @@ public class LoginPageTest {
         )))
             driver.findElement(By.xpath("//a/i[@class='icon-2x icon-signout']")).click();
         else
-            Assertions.fail("Logout button is not visible and/or clickable.");
+            Assert.fail("Logout button is not visible and/or clickable.");
 
         driver.quit();
     }
+
+    String browser = "chrome";
 }
