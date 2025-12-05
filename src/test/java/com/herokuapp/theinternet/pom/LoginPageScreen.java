@@ -35,9 +35,20 @@ public class LoginPageScreen {
     //Page Actions
     public void navigateToLoginPage(){
         driver.get(common.baseURL);
-        wait.until(ExpectedConditions.visibilityOf(txtUsername));
-        wait.until(ExpectedConditions.visibilityOf(txtPassword));
-        wait.until(ExpectedConditions.visibilityOf(btnLogin));
+    }
+
+    public boolean isLoginPageLoaded(){
+        try{
+            wait.until(ExpectedConditions.visibilityOfAllElements(
+                    txtUsername,
+                    txtPassword,
+                    btnLogin
+            ));
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
     }
 
     public void enterUserName(String username){
@@ -52,7 +63,7 @@ public class LoginPageScreen {
         txtPassword.sendKeys(password);
     }
 
-    public void clickLogin() {
+    public void clickLoginButton() {
         wait.until(ExpectedConditions.elementToBeClickable(btnLogin));
         btnLogin.click();
     }

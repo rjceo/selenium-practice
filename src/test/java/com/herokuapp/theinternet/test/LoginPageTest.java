@@ -7,9 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-
-import static org.testng.Assert.fail;
-
 public class LoginPageTest {
     private Common common;
     private WebDriver driver;
@@ -39,7 +36,7 @@ public class LoginPageTest {
         loginPageScreen.navigateToLoginPage();
         loginPageScreen.enterUserName(common.UserName);
         loginPageScreen.enterPassword(common.Password);
-        loginPageScreen.clickLogin();
+        loginPageScreen.clickLoginButton();
         Assert.assertTrue(new SecureAreaScreen(driver).isSecurePageLoaded());
     }
 
@@ -49,7 +46,7 @@ public class LoginPageTest {
     )
     public void verifyErrorBlankCredentials(){
         loginPageScreen.navigateToLoginPage();
-        loginPageScreen.clickLogin();
+        loginPageScreen.clickLoginButton();
         Assert.assertEquals(loginPageScreen.getFlashErrorMessage(), "Your username is invalid!\n×");
     }
 
@@ -61,7 +58,7 @@ public class LoginPageTest {
         loginPageScreen.navigateToLoginPage();
         loginPageScreen.clearFields();
         loginPageScreen.enterUserName(common.UserName);
-        loginPageScreen.clickLogin();
+        loginPageScreen.clickLoginButton();
         Assert.assertEquals(loginPageScreen.getFlashErrorMessage(), "Your password is invalid!\n×");
     }
 
@@ -73,7 +70,7 @@ public class LoginPageTest {
         loginPageScreen.navigateToLoginPage();
         loginPageScreen.clearFields();
         loginPageScreen.enterUserName(common.UserName);
-        loginPageScreen.clickLogin();
+        loginPageScreen.clickLoginButton();
         Assert.assertEquals(loginPageScreen.getFlashErrorMessage(), "Your password is invalid!\n×");
     }
 }

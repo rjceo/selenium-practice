@@ -6,13 +6,17 @@
     </listeners>
 
     <test name="System Test">
-        <classes>
+        <packages>
+            <package name="com.herokuapp.theinternet.test"/>
+        </packages>
+        <!--<classes>
             <class name="com.herokuapp.theinternet.test.LoginPageTest"/>
-        </classes>
-        <groups>
+            <class name="com.herokuapp.theinternet.test.SecureAreaTest"/>
+        </classes>-->
+        <!--<groups>
             <run>
-                <include name="negative"/>
+                <include name="positive"/>
             </run>
-        </groups>
+        </groups>-->
     </test>
 </suite>
