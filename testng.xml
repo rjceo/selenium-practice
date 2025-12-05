@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Selenium Practice">
-    <test verbose="2" name="System Test">
+<suite name="Selenium Practice" verbose="3">
+    <listeners>
+        <listener class-name="org.testng.reporters.EmailableReporter2"/>
+    </listeners>
+
+    <test name="System Test">
         <classes>
             <class name="com.herokuapp.theinternet.test.LoginPageTest"/>
         </classes>
+        <groups>
+            <run>
+                <include name="negative"/>
+            </run>
+        </groups>
     </test>
 </suite>
